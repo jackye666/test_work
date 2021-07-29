@@ -1,0 +1,36 @@
+<img id = "img" src = "./static/images/kda1.jpg" width = 500 height = 300>
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>jackye</title> 
+</head>
+<body>
+	
+<script>
+var times = 0
+function changeImage()
+{
+    times++
+	element=document.getElementById('myimage')
+    if(times%2 == 0)
+    {
+        element.src="./static/images/kda2.jpg";
+        element.width = 500
+        element.height = 300
+    }
+	else
+	{
+		element.src="./static/images/kda1.jpg";
+        element.width = 500
+        element.height = 300
+	}
+    
+}
+</script>
+<img id="myimage" src="./static/images/kda2.jpg" width="500" height="300" style = >
+<br>
+<button type="button" onclick="changeImage()">点击这里更换图片 </button>
+	
+</body>
+</html>

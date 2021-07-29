@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面标题</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+
+<div class = "container" style="width:30%;height:100px;position:relative">
+        <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    var data = null
+    var timer = null
+    chart = draw_chart()
+    send_data()
+    function send_data() {
+        var XHR = new XMLHttpRequest();
+        XHR.open('POST', 'modify');
+        XHR.setRequestHeader('content-type', 'application/json');  //先open再设置请求头
+        XHR.send();
+        XHR.onreadystatechange = function(){
+              if(XHR.readyState === 4 && XHR.status === 200){
+                data = JSON.parse(XHR.responseText)
+                refresh_data(chart,[data.data1,data.data2])
+              }
+        };
+        timer = setTimeout("send_data()","1000")
+    }
+
+
+function draw_chart(){
+    let myChart = document.getElementById("myChart").getContext("2d")
+    let massPopChart = new Chart(myChart,{
+        type:'bar',
+        data:{
+            labels:['a','b'],
+            datasets:[{
+                //label: 'Population',
+                data:[
+                    1,
+                    1
+                ],
+                backgroundColor:[
+                    'rgba(135,20,132,0.6)',
+                    'rgba(255,90,132,0.6)',
+                ],
+                borderWidth: 4,
+                borderColor:'#777'
+            }]
+        },
+        
+        options:{
+            animation: false,
+            scales:{
+                yAxes:[{
+                    ticks:{
+                        min:0,
+                        max:1.5
+                    }
+
+                }]                
+            }
+        }
+    })
+    return massPopChart
+}
+
+function refresh_data(chart, data) {
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data = data
+    });
+    chart.update();
+}
+</script>
+<div id = "d1"> </div>
+</body>
+</html>

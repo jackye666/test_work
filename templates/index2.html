@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>jackye</title> 
+</head>
+<body>
+    <div style="width:80%;height:300px;position:relative">
+        <img src="./static/images/kda1.jpg" width = 500 height 300 />
+        <span style="position: absolute;border:2px solid red;"></span>
+    </div>
+
+    <p></p>
+    <input type="text" id="btnTop"/>
+    <input type="text" id="btnLeft" />
+    <input type="text" id="btnWidth" />
+    <input type="text" id="btnHeight" />
+    <input type="button" id="btn" value="画框"/>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script>
+        $(function () {
+            $("input[type=text]").width(50).height(18);
+
+            $("#btn").click(function () {
+                //取值
+                var top = $("#btnTop").val();
+                var left = $("#btnLeft").val();
+                var wid = $("#btnWidth").val();
+                var hig = $("#btnHeight").val();
+
+                //赋值
+                $("span").width(wid).height(hig);
+                $("span").css({'top':top+"px",'left':left+"px"});
+
+            });
+        });
+    </script>
+
+	
+</body>
+</html>

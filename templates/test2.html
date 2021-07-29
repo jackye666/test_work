@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
+</script>
+<script>
+    $(document).ready(function(){
+    $("#b1").click(function(){
+        $("p").hide();
+    });
+    $("#b2").click(function(){
+        var t = $("#b1").text();
+        console.log(t);
+        alert(t);
+    });
+    });
+</script>
+</head>
+
+<body>
+<h2>这是一个标题</h2>
+<p>这是一个段落。</p>
+<p>这是另一个段落。</p>
+<button id = b1>点我</button>
+<button id = b2>还点我</button>
+</body>
+</html>

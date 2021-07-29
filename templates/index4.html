@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面标题</title>
+</head>
+<script>
+var timer=null;
+
+
+function send_data(){
+        var XHR = new XMLHttpRequest();
+        XHR.open('POST', 'modify');
+        XHR.send()
+        XHR.onreadystatechange = function(){
+         if(XHR.readyState === 4 && XHR.status === 200){
+            document.getElementById("p").innerHTML=XHR.responseText; //成功收到响应后，替换当前的'no response'，显示为响应返回的'OK'
+            
+         }
+      };
+
+}
+
+</script>
+</head>
+<body>
+<p id = "p"> here</p>
+<button type="button"  onclick="send_data()">Start</button>
+<button type="button"  onclick = "clearTimeout(timer)">Stop</button>
+</body>
+</html>
